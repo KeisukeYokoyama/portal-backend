@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\PostsController;
 use App\Http\Controllers\Api\CategoriesController;
+use App\Http\Controllers\Api\TagsController;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -25,3 +26,10 @@ Route::post('/categories', [CategoriesController::class, 'store']);
 Route::get('/categories/{slug}', [CategoriesController::class, 'show']);
 Route::put('/categories/{id}', [CategoriesController::class, 'update']);
 Route::delete('/categories/{id}', [CategoriesController::class, 'destroy']);
+
+// Tag resource
+Route::get('/tags', [TagsController::class, 'index']);
+Route::post('/tags', [TagsController::class, 'store']);
+Route::get('/tags/{slug}', [TagsController::class, 'show']);
+Route::put('/tags/{id}', [TagsController::class, 'update']);
+Route::delete('/tags/{id}', [TagsController::class, 'destroy']);
