@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Ramsey\Uuid\Uuid;
 
 class RegisteredUserController extends Controller
 {
@@ -27,6 +28,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
+            'uuid' => Uuid::uuid7(),
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->string('password')),
